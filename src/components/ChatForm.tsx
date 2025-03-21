@@ -1,11 +1,16 @@
 "use client";
 import React, { useState } from "react";
 
-function ChatForm() {
+function ChatForm({
+  onSendMessage,
+}: {
+  onSendMessage: (message: string) => void;
+}) {
   const [message, setMessage] = useState("");
   const handelSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (message.trim() !== "") {
+      onSendMessage(message);
       setMessage("");
     }
   };
